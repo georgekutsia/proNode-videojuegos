@@ -23,7 +23,6 @@ const postVideojuego = async (req, res) => {
 
 const updateVideojuego = async (req, res) => {
   try {
-    
     const {id} = req.params;
     const updateVideojuego = new Videojuego(req.body);
     updateVideojuego.id = id;
@@ -31,7 +30,7 @@ const updateVideojuego = async (req, res) => {
     if (!updatedInfo){
       return res.status(404).json({message: "No encontrado :("});
     }
-    return req.status(200),json(updatedInfo);
+    return res.status(200).json(updatedInfo);
   } catch (error) {
     return res.status(500).json(error);
   }
