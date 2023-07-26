@@ -11,19 +11,13 @@ const arrayVideojuegos = [
         "foto": "https://phantom-marca.unidadeditorial.es/14c48c8130ee7083d3f8343b67180af7/crop/0x0/1980x1112/resize/720/f/webp/assets/multimedia/imagenes/2022/03/16/16474267987028.jpg"
     },
     {
-        "nombre": "League of Legends",
+        "nombre": "WOW",
         "año": "2008",
         "desarrollador": "Riot Games", 
         "plataformas": ["PC"],
         "foto": "https://phantom-marca.unidadeditorial.es/14c48c8130ee7083d3f8343b67180af7/crop/0x0/1980x1112/resize/720/f/webp/assets/multimedia/imagenes/2022/03/16/16474267987028.jpg"
     },
-    {
-        "nombre": "League of Legends",
-        "año": "2008",
-        "desarrollador": "Riot Games", 
-        "plataformas": ["PC"],
-        "foto": "https://phantom-marca.unidadeditorial.es/14c48c8130ee7083d3f8343b67180af7/crop/0x0/1980x1112/resize/720/f/webp/assets/multimedia/imagenes/2022/03/16/16474267987028.jpg"
-    },
+
     {
         "nombre": "League of Legends",
         "año": "2008",
