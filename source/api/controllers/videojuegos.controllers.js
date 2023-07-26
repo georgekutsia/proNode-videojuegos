@@ -10,6 +10,15 @@ const getVideojuego = async(req,res)=>{
   }
 }
 
+const postVideojuego = async (req, res) => {
+  try {
+    const newVideojuego = req.body;
+    const createdVideojuego = await new Videojuego(newVideojuego);
+    const created = await createdVideojuego.save()
+    return res.status(200).json(created);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+}
 
-
-module.exports = {getVideojuego}
+module.exports = { getVideojuego, postVideojuego };

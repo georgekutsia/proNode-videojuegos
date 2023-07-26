@@ -9,7 +9,15 @@ const videojuegoSchema = new Schema(
         plataformas:{type:Array, required:true},
         foto:{type:String, required:false}
       },{
-        timestamps:true
+        timestamps:true,
+        toJSON:{
+          transform:(req, res) =>{
+            res.id =res._id;
+            delete res._id;
+            delete res.__v;
+            return res
+          }
+        }
         // esto nos genera una fecha de creación y modificación automatica de este objeto
       }
 )
