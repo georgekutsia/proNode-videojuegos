@@ -6,6 +6,7 @@ const usuarioSchema = new Schema(
     {
         nombre:{type:String, required:true, trim:true},
         email:{type:String, required:true},
+        password:{type:String, required:true},
         edad:{type:Number, required:true},
         foto:{type:String, required:true},
         favorito:[{type:Schema.ObjectId, ref:"videojuego"}]
