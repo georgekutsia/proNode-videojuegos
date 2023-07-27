@@ -4,6 +4,7 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const {connect} = require("./source/utils/db");
 const vidRouter = require("./source/api/routes/videojuegos.routes");
+const usuariosRoutes = require("./source/api/routes/usuarios.routes");
 const cors = require ("cors");
 
 const PORT = process.env.PORT;
@@ -18,5 +19,8 @@ app.use(cors(
 app.use(express.json());
 
 app.use("/videojuegos", vidRouter)
+app.use("/usuarios", usuariosRoutes);
+
+
 connect()
 app.listen(PORT, ()=>console.log(`buenas noches ${PORT}`))

@@ -39,4 +39,13 @@ const login = async (req,res) => {
         return res.status(500).json(error)
     }
 }
-module.exports={register,login}
+
+const getUsuarios = async (req, res) => {
+  try {
+    const allUsuarios = await Usuario.find();
+    return res.status(200).json(allUsuarios);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+module.exports = { register, login, getUsuarios };
