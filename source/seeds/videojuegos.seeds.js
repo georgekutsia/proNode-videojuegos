@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const Videojuego = require("../api/models/videojuegos.model");
 const Usuario = require("../api/models/usuarios.model");
+const Producto = require("../api/models/productos.model");
 const faker = require("faker");
 
 // const arrayVideojuegos = [
@@ -41,9 +42,9 @@ mongoose
 .connect(DB_url)
 
 .then(async () => {
-const allVideojuegos = await Usuario.find();
+const allVideojuegos = await Producto.find();
 if (allVideojuegos.length > 0) {
-    await Usuario.collection.drop();
+    await Producto.collection.drop();
     console.log("DB videojuegos vaciada");
 }
 const videojuegosData = [];
@@ -54,46 +55,76 @@ for (let i = 0; i < 40; i++) {
     do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
     } while (plataformaAleatoria2 === plataformaAleatoria1);
     videojuegosData.push({
-    nombre: faker.lorem.word(),
-    email: faker.internet.email(),
-    edad: faker.datatype.number(100),
-    favorito: [],
+      nombre: faker.commerce.productName(),
+      precio: faker.commerce.price({ min: 30, max: 120, dec: 0, symbol: "€" }),
+      origen: faker.location.country(),
+      compatibilidad: [`${plataformaAleatoria1}`, `${plataformaAleatoria2}`],
     });
 }
-await Usuario.insertMany(videojuegosData);
+await Producto.insertMany(videojuegosData);
 console.log("Insertados correctamente los videojuegos");
 })
 .catch((error) => console.log("error insertando los Videojuegos", error))
 .finally(() => mongoose.disconnect());
 
+  
+//   .then(async () => {
+//   const allVideojuegos = await Usuario.find();
+//   if (allVideojuegos.length > 0) {
+//       await Usuario.collection.drop();
+//       console.log("DB videojuegos vaciada");
+//   }
+//   const videojuegosData = [];
+//   for (let i = 0; i < 40; i++) {
+//       let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
+//       let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
+//       let plataformaAleatoria2;
+//       do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
+//       } while (plataformaAleatoria2 === plataformaAleatoria1);
+//       videojuegosData.push({
+//       nombre: faker.lorem.word(),
+//       email: faker.internet.email(),
+//       edad: faker.datatype.number(100),
+//       foto: faker.image.cats(),
+//       favorito: [],
+//       });
+//   }
+//   await Usuario.insertMany(videojuegosData);
+//   console.log("Insertados correctamente los videojuegos");
+//   })
+//   .catch((error) => console.log("error insertando los Videojuegos", error))
+//   .finally(() => mongoose.disconnect());
 
 
 
 
-// .then(async () => {
-// const allVideojuegos = await Videojuego.find();
-// if (allVideojuegos.length > 0) {
-//     await Videojuego.collection.drop();
-//     console.log("DB videojuegos vaciada");
-// }
-// const videojuegosData = [];
-// for (let i = 0; i < 40; i++) {
-//     let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
-//     let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
-//     let plataformaAleatoria2;
-//     do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
-//     } while (plataformaAleatoria2 === plataformaAleatoria1);
-//     videojuegosData.push({
-//     nombre: faker.commerce.productName(),
-//     año: faker.date.between("2000-01-01", "2023-01-01"),
-//     desarrollador: faker.company.bs(),
-//     plataformas: [`${plataformaAleatoria1}`, `${plataformaAleatoria2}`],
-//     foto: faker.image.abstract(1234, 2345),
-//     descripcion: faker.lorem.paragraph(6),
-//     });
-// }
-// await Videojuego.insertMany(videojuegosData);
-// console.log("Insertados correctamente los videojuegos");
-// })
-// .catch((error) => console.log("error insertando los Videojuegos", error))
-// .finally(() => mongoose.disconnect());
+//   .then(async () => {
+//     const allVideojuegos = await Videojuego.find();
+//     if (allVideojuegos.length > 0) {
+//       await Videojuego.collection.drop();
+//       console.log("DB videojuegos vaciada");
+//     }
+//     const videojuegosData = [];
+//     for (let i = 0; i < 40; i++) {
+//       let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
+//       let plataformaAleatoria1 =
+//         plataformas[Math.floor(Math.random() * plataformas.length)];
+//       let plataformaAleatoria2;
+//       do {
+//         plataformaAleatoria2 =
+//           plataformas[Math.floor(Math.random() * plataformas.length)];
+//       } while (plataformaAleatoria2 === plataformaAleatoria1);
+//       videojuegosData.push({
+//         nombre: faker.commerce.productName(),
+//         año: faker.date.between("2000-01-01", "2023-01-01"),
+//         desarrollador: faker.company.bs(),
+//         plataformas: [`${plataformaAleatoria1}`, `${plataformaAleatoria2}`],
+//         foto: faker.image.fashion(),
+//         descripcion: faker.lorem.paragraph(6),
+//       });
+//     }
+//     await Videojuego.insertMany(videojuegosData);
+//     console.log("Insertados correctamente los videojuegos");
+//   })
+//   .catch((error) => console.log("error insertando los Videojuegos", error))
+//   .finally(() => mongoose.disconnect());
