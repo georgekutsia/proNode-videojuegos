@@ -36,4 +36,17 @@ const updateVideojuego = async (req, res) => {
   }
 }
 
-module.exports = { getVideojuego, postVideojuego, updateVideojuego};
+const deleteVideojuego = async (req, res) =>{
+  try {
+    const {id} = req.params;
+    const deleteVideojuego = await Videojuego.findByIdAndDelete(id)
+    if(!deleteVideojuego){
+      return res.status(418).json({message: "¿Que haces?"})
+    }
+    return res.status(200).json(deleteVideojuego)
+  } catch (error) {
+    return res.status(500).json(error)
+  }
+}
+
+module.exports = { getVideojuego, postVideojuego, updateVideojuego, deleteVideojuego};
