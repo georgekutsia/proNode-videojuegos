@@ -7,7 +7,8 @@ const videojuegoSchema = new Schema(
         año:{type:String, required:true},
         desarrollador:{type:String, required:true},
         plataformas:{type:Array, required:true},
-        foto:{type:String, required:false}
+        foto:{type:String, required:false},
+        descripcion:{type:String, required:true}
       },{
         timestamps:true,
         toJSON:{
