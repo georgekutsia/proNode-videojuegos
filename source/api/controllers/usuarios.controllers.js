@@ -1,6 +1,6 @@
 const Usuario = require("../models/usuarios.model");
 const bcrypt = require ("bcrypt")
-const {validateEmail, validatePassword, usedEmail} = require ("../../utils/validators");
+// const {validateEmail, validatePassword, usedEmail} = require ("../../utils/validators");
 const {generateSign} = require("../../utils/jwt");
 
 

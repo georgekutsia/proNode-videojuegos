@@ -41,59 +41,59 @@ const DB_url = process.env.DB_url;
 mongoose
 .connect(DB_url)
 
-.then(async () => {
-const allVideojuegos = await Producto.find();
-if (allVideojuegos.length > 0) {
-    await Producto.collection.drop();
-    console.log("DB videojuegos vaciada");
-}
-const videojuegosData = [];
-for (let i = 0; i < 40; i++) {
-    let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
-    let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
-    let plataformaAleatoria2;
-    do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
-    } while (plataformaAleatoria2 === plataformaAleatoria1);
-    videojuegosData.push({
-      nombre: faker.commerce.productName(),
-      precio: faker.commerce.price({ min: 30, max: 120, dec: 0, symbol: "€" }),
-      origen: faker.location.country(),
-      compatibilidad: [`${plataformaAleatoria1}`, `${plataformaAleatoria2}`],
-    });
-}
-await Producto.insertMany(videojuegosData);
-console.log("Insertados correctamente los videojuegos");
-})
-.catch((error) => console.log("error insertando los Videojuegos", error))
-.finally(() => mongoose.disconnect());
+// .then(async () => {
+// const allVideojuegos = await Producto.find();
+// if (allVideojuegos.length > 0) {
+//     await Producto.collection.drop();
+//     console.log("DB videojuegos vaciada");
+// }
+// const videojuegosData = [];
+// for (let i = 0; i < 40; i++) {
+//     let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
+//     let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
+//     let plataformaAleatoria2;
+//     do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
+//     } while (plataformaAleatoria2 === plataformaAleatoria1);
+//     videojuegosData.push({
+//       nombre: faker.commerce.productName(),
+//       precio: faker.commerce.price({ min: 30, max: 120, dec: 0, symbol: "€" }),
+//       compatibilidad: [`${plataformaAleatoria1}`, `${plataformaAleatoria2}`],
+//     });
+// }
+// await Producto.insertMany(videojuegosData);
+// console.log("Insertados correctamente los videojuegos");
+// })
+// .catch((error) => console.log("error insertando los Videojuegos", error))
+// .finally(() => mongoose.disconnect());
 
   
-//   .then(async () => {
-//   const allVideojuegos = await Usuario.find();
-//   if (allVideojuegos.length > 0) {
-//       await Usuario.collection.drop();
-//       console.log("DB videojuegos vaciada");
-//   }
-//   const videojuegosData = [];
-//   for (let i = 0; i < 40; i++) {
-//       let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
-//       let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
-//       let plataformaAleatoria2;
-//       do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
-//       } while (plataformaAleatoria2 === plataformaAleatoria1);
-//       videojuegosData.push({
-//       nombre: faker.lorem.word(),
-//       email: faker.internet.email(),
-//       edad: faker.datatype.number(100),
-//       foto: faker.image.cats(),
-//       favorito: [],
-//       });
-//   }
-//   await Usuario.insertMany(videojuegosData);
-//   console.log("Insertados correctamente los videojuegos");
-//   })
-//   .catch((error) => console.log("error insertando los Videojuegos", error))
-//   .finally(() => mongoose.disconnect());
+  .then(async () => {
+  const allVideojuegos = await Usuario.find();
+  if (allVideojuegos.length > 0) {
+      await Usuario.collection.drop();
+      console.log("DB videojuegos vaciada");
+  }
+  const videojuegosData = [];
+  for (let i = 0; i < 40; i++) {
+     const randomNumber = Math.floor(Math.random() * 151) + 100;
+      let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
+      let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
+      let plataformaAleatoria2;
+      do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
+      } while (plataformaAleatoria2 === plataformaAleatoria1);
+      videojuegosData.push({
+        nombre: faker.lorem.word(),
+        email: faker.internet.email(),
+        edad: faker.datatype.number(100),
+        foto: `https://placekitten.com/200/${randomNumber}`,
+        favorito: [],
+      });
+  }
+  await Usuario.insertMany(videojuegosData);
+  console.log("Insertados correctamente los videojuegos");
+  })
+  .catch((error) => console.log("error insertando los Videojuegos", error))
+  .finally(() => mongoose.disconnect());
 
 
 
