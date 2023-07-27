@@ -46,16 +46,12 @@ if (allVideojuegos.length > 0) {
     console.log("DB videojuegos vaciada");
 }
 const videojuegosData = [];
-for (let i = 0; i < 20; i++) {
-    let plataformas = ["playstation", "xbox360", "nintendo", "pc"];
-    let plataformaAleatoria1 =
-    plataformas[Math.floor(Math.random() * plataformas.length)];
+for (let i = 0; i < 50; i++) {
+    let plataformas = ["playstation", "xbox360", "nintendo", "pc", "wii"];
+    let plataformaAleatoria1 =plataformas[Math.floor(Math.random() * plataformas.length)];
     let plataformaAleatoria2;
-    do {
-    plataformaAleatoria2 =
-        plataformas[Math.floor(Math.random() * plataformas.length)];
+    do {plataformaAleatoria2 =plataformas[Math.floor(Math.random() * plataformas.length)];
     } while (plataformaAleatoria2 === plataformaAleatoria1);
-
     videojuegosData.push({
     nombre: faker.commerce.productName(),
     año: faker.date.between("2000-01-01", "2023-01-01"),
