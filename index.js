@@ -3,11 +3,18 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const {connect} = require("./source/utils/db");
-const vidRouter = require("./source/api/routes/videojuegos.routes")
+const vidRouter = require("./source/api/routes/videojuegos.routes");
+const cors = require ("cors");
 
 const PORT = process.env.PORT;
 const app = express();
 
+app.use(cors(
+    {
+        origin:"*",
+        credentials:true
+    }
+))
 app.use(express.json());
 
 app.use("/videojuegos", vidRouter)
