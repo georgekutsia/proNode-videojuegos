@@ -40,7 +40,8 @@ const DB_url = process.env.DB_url;
 
 mongoose
 .connect(DB_url)
-
+//  Producto
+//  Producto
 // .then(async () => {
 // const allVideojuegos = await Producto.find();
 // if (allVideojuegos.length > 0) {
@@ -66,7 +67,8 @@ mongoose
 // .catch((error) => console.log("error insertando los Videojuegos", error))
 // .finally(() => mongoose.disconnect());
 
-  
+//jugador/user
+//jugador/user
   .then(async () => {
   const allVideojuegos = await Usuario.find();
   if (allVideojuegos.length > 0) {
@@ -85,7 +87,7 @@ mongoose
         nombre: faker.lorem.word(),
         email: faker.internet.email(),
         edad: faker.datatype.number(100),
-        foto: `https://placekitten.com/200/${randomNumber}`,
+        foto: `https://placekitten.com/${randomNumber}/${randomNumber}`,
         favorito: [],
       });
   }
@@ -97,7 +99,7 @@ mongoose
 
 
 
-
+//Videojuego
 //   .then(async () => {
 //     const allVideojuegos = await Videojuego.find();
 //     if (allVideojuegos.length > 0) {
