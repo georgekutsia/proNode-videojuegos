@@ -21,11 +21,11 @@ const getAllCountrys = async(req,res) => {
 const getAllCountrysById = async (req,res) => {
     try {
         const {id} = req.params;
-        const doc = await Country.findById(id).populate("usuarios");
-        if (!doc){
+        const count = await Country.findById(id).populate("usuarios");
+        if (!count){
         return res.status(400).json({message: "Country no encontrado"});
         }   
-        return res.status(200).json(getAllCountrysById);
+        return res.status(200).json(count);
 
     } catch (error) {
         return res.status(400).json({message: "Country no encontrado"});

@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const usuarioSchema = new Schema(
   {
-    nombre: { type: String, required: true, trim: true },
-    email: { type: String, required: true },
+    nombre: { type: String, required: true, trim: true},
+    email: { type: String, required: true, trim: true },
     password: { type: String, required: true },
     edad: { type: Number, required: true },
-    foto: { type: String, required: true },
+    foto: { type: String, required: false },
     favorito: [{ type: Schema.Types.ObjectId, ref: "videojuego" }],
   },
   {
@@ -18,6 +18,7 @@ const usuarioSchema = new Schema(
         res.id = res._id;
         delete res._id;
         delete res.__v;
+        delete res.password;
         return res;
       },
     },

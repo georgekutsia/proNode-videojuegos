@@ -31,10 +31,10 @@ const login = async (req,res) => {
         const usuarioInfo = await Usuario.findOne({email:req.body.email})
         console.log("usuarioinfo",usuarioInfo)
         if (!usuarioInfo) {
-            return res.status(404).json({message: "email no encontrado"})
+            return res.status(404).json({message: "Contraseña o Mail incorrectos"})
         }
         if (!bcrypt.compareSync(req.body.password, usuarioInfo.password)){
-            return res.status(404).json({message: "password incorrecto"})
+            return res.status(404).json({message: "Contraseña o Mail incorrectos"})
         }
         const token = generateSign(usuarioInfo._id, usuarioInfo.email);
         return res.status(200).json({usuario:usuarioInfo, token:token})
@@ -65,4 +65,17 @@ const getUsuarios = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-module.exports = { register, login, getUsuarios, deleteUsuarios };
+
+
+const getUsuariosMayoresDeEdad = async (req, res) => {
+  try {
+    const usuariosMayoresDeEdad = await Usuario.find({ edad: { $gte: 18 } })
+      .select("nombre edad") // Especifica los campos que deseas incluir en el resultado
+    return res.status(200).json(usuariosMayoresDeEdad);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+};
+
+
+module.exports = { register, login, getUsuarios, deleteUsuarios, getUsuariosMayoresDeEdad };

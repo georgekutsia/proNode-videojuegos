@@ -1,5 +1,4 @@
     //Buenas noches
-
 const express = require("express");
 const dotenv = require("dotenv").config();
 const {connect} = require("./source/utils/db");
