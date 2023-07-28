@@ -6,7 +6,7 @@ const {connect} = require("./source/utils/db");
 const vidRouter = require("./source/api/routes/videojuegos.routes");
 const usuariosRoutes = require("./source/api/routes/usuarios.routes");
 const productosRoutes = require("./source/api/routes/productos.routes");
-const documentoRoutes = require("./source/api/routes/documento.routes")
+const documentoRoutes = require("./source/api/routes/country.routes")
 const cors = require ("cors");
 
 const PORT = process.env.PORT;
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use("/videojuegos", vidRouter)
 app.use("/usuarios", usuariosRoutes);
 app.use("/productos", productosRoutes);
-app.use("/documentos", documentoRoutes);
+app.use("/countries", documentoRoutes);
 
 
 connect()

@@ -7,12 +7,11 @@ const documentoSchema = new Schema(
         title: {type: String, required: true},
         description: {type: String, required: true},
         usuarios: [{type: Schema.ObjectId, ref: "usuario"}],
-        cliente: [{type: Schema.ObjectId, ref: "cliente"}],
     },
-    {collection: "documento"}
+    {collection: "countries"}
     
 )
 
-const Documento = mongoose.model("documento", documentoSchema);
+const Country = mongoose.model("countries", documentoSchema);
 
-module.exports = Documento;
+module.exports = Country;

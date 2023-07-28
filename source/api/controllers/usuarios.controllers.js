@@ -43,25 +43,14 @@ const login = async (req,res) => {
     }
 }
 
-const postUsuarios = async (req, res) => {
-    try {
-      const newUsuario = req.body;
-      const createdUsuario = new Usuario(newUsuario);
-      const created = await createdUsuario.save()
-      return res.status(200).json(created);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
-
   const deleteUsuarios = async (req, res) =>{
     try {
       const {id} = req.params;
       const deleteUsuarios = await Usuario.findByIdAndDelete(id)
-      if(!deleteUsuario){
+      if(!deleteUsuarios){
         return res.status(418).json({message: "¿Que haces?"})
       }
-      return res.status(200).json(deleteUsuario)
+      return res.status(200).json(deleteUsuarios)
     } catch (error) {
       return res.status(500).json(error)
     }
@@ -69,10 +58,11 @@ const postUsuarios = async (req, res) => {
 
 const getUsuarios = async (req, res) => {
   try {
-    const allUsuarios = await Usuario.find();
+    const allUsuarios = await Usuario.find().populate("favorito");
+    console.log(allUsuarios)
     return res.status(200).json(allUsuarios);
   } catch (error) {
     return res.status(500).json(error);
   }
 };
-module.exports = { register, login, getUsuarios, postUsuarios, deleteUsuarios };
+module.exports = { register, login, getUsuarios, deleteUsuarios };
