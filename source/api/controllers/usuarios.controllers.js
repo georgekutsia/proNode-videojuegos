@@ -70,7 +70,7 @@ const getUsuarios = async (req, res) => {
 const getUsuariosMayoresDeEdad = async (req, res) => {
   try {
     const usuariosMayoresDeEdad = await Usuario.find({ edad: { $gte: 18 } })
-      .select("nombre edad") // Especifica los campos que deseas incluir en el resultado
+      .select("nombre edad") 
     return res.status(200).json(usuariosMayoresDeEdad);
   } catch (error) {
     return res.status(500).json(error);
